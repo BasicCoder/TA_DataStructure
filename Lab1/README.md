@@ -1,5 +1,5 @@
 # Experiment 1
-##  最大无重复字符子串的长度
+## 一.最大无重复字符子串的长度
 ### Problem Description
 输入为一个字符串，找出最长的无重复字符的子字符串，输出它的长度。
 ### Input Format
@@ -11,7 +11,7 @@
 
 [Reference](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
-## 简单排序
+## 二.简单排序
 ### Problem Description
 给定一组含有 $n$ 个整数的无序数列，将前 $k$ 大的数按照由大到小的顺序输出。
 ### Input Format
