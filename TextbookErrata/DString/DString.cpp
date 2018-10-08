@@ -76,9 +76,9 @@ DString& DString::operator = (const DString& str){
 
 		c) try{
 
-		}catch(){
+		   }catch(){
 
-		}
+		   }
 		*/ 
 		
 		strcpy(ch, str.ch);
