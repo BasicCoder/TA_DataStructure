@@ -28,7 +28,7 @@ while(cin) 中有个缓冲机制规定，只有收到回车键，才会将所有
 
 ***扩展***：
 
-1) 文件结束符：
+1) 文件结束符(EOF)：
 不同的操作系统有不同的约定，在windows系统中，输入文件结束符的方法是先按Ctrl+Z，然后再按Enter；在UNIX系统中，包括Mac OS X系统中，文件结束输入为Ctrl+D;
 
 2) 输入流检查方式：可以参考链接[Reference](https://blog.csdn.net/shiyongraow/article/details/77844536)
