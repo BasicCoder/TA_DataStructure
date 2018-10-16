@@ -37,6 +37,77 @@ while(cin) 中有个缓冲机制规定，只有收到回车键，才会将所有
 可以参考链接
 [Reference](https://stackoverflow.com/questions/19483126/whats-the-difference-between-whilecin-and-whilecin-num) 
 
+```
+while(cin){
+    cin >> y;
+    // code
+}
+```
+```while(cin)``` 表示“当之前所有关于cin的操作都已经成功，继续进入循环”。一旦我们进入循环，我们将尝试将值读入y。这可能会成功，也可能会失败。但是，无论是哪种情况，循环都将继续执行。 这意味着一旦输入了无效数据或者没有更多数据需要读取，循环将使用旧的y值再次执行，因此会得到比需要的多一次的循环迭代。</br>
+测试代码：
+```
+#include <iostream>
+#include <vector>
+using namespace std; 
+
+int main()
+{
+	vector<int> num;
+	int x = 0;
+	
+	while (cin)
+	{
+		cout << "F: " << cin.rdstate() << endl;
+		cin >> x;
+		cout << "E: " << cin.rdstate() << endl;
+		num.push_back(x); 
+	}
+	
+	cout << num.size() << endl; 
+	for (int i = 0; i < num.size(); i ++)	cout << num[i] << "  ";
+	cout << endl;
+	
+	return 0;
+}
+```
+输入测试：
+```
+1 2 3 4
+^Z
+```
+结果输出：
+```
+F: 0
+1 2 3 4
+E: 0
+F: 0
+E: 0
+F: 0
+E: 0
+F: 0
+E: 0
+F: 0
+^Z
+E: 6
+5
+1  2  3  4  4
+```
+从结果我们可以看到，当我们准备输入数据前，cin 状态为 0 表示正常，所以正常进入循环。然后我们输入数字 1 2 3 4, 点击 Enter, 都得到正确的 cin 输入状态。所以在最后一次之后，又重新进入循环。我们输入 ^Z,并点击 Enter，期望结束输入流, cin 检查输入流，cin >> x 尝试执行，得到输入错误，并且检测到输入流结束，所以 cin 返回状态 6, 程序继续执行, num.push_back(x) 将 x 的旧值放入到数组后面，继续下次循环，循环条件不满足，结束循环。所以我们可以看到，循环总是要比我们想要的循环次数多一次，这里需要特别注意。
+
+
+
+条件状态：
+
+IO流有四种条件状态，分别用位来控制。
+
+cin.badbit : 001   1   表示系统级错误，一旦被置位，流就无法再使用了
+
+cin.eofbit : 010   2   表示流已经读完，到达尾部了
+
+cin.failbit: 100   4   可恢复错误，如期望读取数值却读出一个字符等错误，或者已经到达流的尾部
+
+cin.goodbit: 000   0   可用状态
+
 
 #### Solution 2):
 ```
