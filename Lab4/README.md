@@ -15,3 +15,6 @@ IPv4地址由四个[0, 255]内的整数组成，以点’.’作为分隔符。
 “about”, “above”
 ### Ouput
 2（将”above”中的v修改为u，e修改为t）
+
+### Hints
+[Reference](https://people.cs.pitt.edu/~kirk/cs1501/Pruhs/Spring2006/assignments/editdistance/Levenshtein%20Distance.htm)
